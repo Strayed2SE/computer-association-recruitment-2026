@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="计算机协会招新 - 加入我们，探索代码的无限可能。编程、设计、人工智能、网络安全等多个方向等你来挑战！">
+    <title>计算机协会 · 2026招新</title>
+
+    <!-- Google Fonts: Space Grotesk + DM Sans (async, non-blocking) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Skip to content -->
+    <a href="#hero" class="skip-link">跳转到主要内容</a>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="主导航">
+        <div class="navbar-inner">
+            <a href="#hero" class="nav-logo" aria-label="计算机协会首页">
+                <div class="nav-logo-icon" data-fallback="code">
+                    <!-- ★ 替换为会徽：将 src 改为实际图片路径，例如 src="assets/emblem1.png" -->
+                    <img class="emblem-img" src="assets/emblem1.png" alt="计协会徽"
+                         onerror="this.style.display='none';this.parentElement.setAttribute('data-fallback','show')">
+                    <svg class="emblem-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                </div>
+                计协
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#about" onclick="scrollToSection(event, 'about')">关于我们</a></li>
+                <li><a href="#departments" onclick="scrollToSection(event, 'departments')">部门介绍</a></li>
+                <li><a href="#events" onclick="scrollToSection(event, 'events')">精彩活动</a></li>
+                <li><a href="#process" onclick="scrollToSection(event, 'process')">加入流程</a></li>
+                <li><a href="#faq" onclick="scrollToSection(event, 'faq')">常见问题</a></li>
+            </ul>
+
+            <button class="nav-cta" onclick="scrollToSection(event, 'cta')">
+                立即加入
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </button>
+
+            <!-- Theme Toggle -->
+            <button class="theme-toggle" id="themeToggle" aria-label="切换深色/浅色模式" title="切换深色/浅色">
+                <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+
+            <button class="hamburger" id="hamburger" aria-label="菜单" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#about" onclick="closeMobileNav()">关于我们</a>
+        <a href="#departments" onclick="closeMobileNav()">部门介绍</a>
+        <a href="#events" onclick="closeMobileNav()">精彩活动</a>
+        <a href="#process" onclick="closeMobileNav()">加入流程</a>
+        <a href="#faq" onclick="closeMobileNav()">常见问题</a>
+        <button class="nav-cta" onclick="closeMobileNav(); scrollToSection(event, 'cta')">立即加入</button>
+    </div>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero" id="hero">
+        <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+        <div class="hero-bg-gradient" aria-hidden="true"></div>
+
+        <div class="hero-content">
+            <!-- ★ 替换为会徽：将 src 改为实际图片路径 -->
+            <div class="hero-emblem">
+                <img class="hero-emblem-img" src="assets/emblem1.png" alt="计算机协会会徽"
+                     onerror="this.style.display='none';this.parentElement.classList.add('no-img')">
+                <div class="hero-emblem-placeholder" aria-hidden="true">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="hero-badge">
+                <span class="hero-badge-dot" aria-hidden="true"></span>
+                2026 秋季招新正式启动
+            </div>
+
+            <h1 class="hero-title">
+                用代码改变世界<br>
+                <span class="hero-title-gradient">从这里开始</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                计算机协会汇聚全校最优秀的技术爱好者。无论你是编程大神还是零基础小白，
+                这里都有属于你的舞台。编程、设计、AI、安全 —— 总有一个方向适合你。
+            </p>
+
+            <div class="hero-actions">
+                <button class="btn btn-primary" onclick="scrollToSection(event, 'cta')">
+                    立即报名
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+                <button class="btn btn-secondary" onclick="scrollToSection(event, 'departments')">
+                    了解部门
+                </button>
+            </div>
+        </div>
+
+        <div class="hero-scroll-indicator" onclick="scrollToSection(event, 'about')" role="button" aria-label="向下滚动" tabindex="0">
+            <span>探索更多</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-visual reveal">
+                    <div class="about-highlights">
+                        <div class="about-card">
+                            <div class="about-card-icon purple">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>编程开发</h4>
+                                <p>Web / 移动端 / 后端 / 游戏开发</p>
+                            </div>
+                        </div>
+                        <div class="about-card">
+                            <div class="about-card-icon cyan">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>技术分享</h4>
+                                <p>每周技术讲座 / 项目实战 / Hackathon</p>
+                            </div>
+                        </div>
+                        <div class="about-card">
+                            <div class="about-card-icon blue">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>竞赛团队</h4>
+                                <p>ACM / CTF / 数学建模 / 创新创业</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-text">
+                    <span class="section-tag">关于我们</span>
+                    <h2 class="section-title">计算机协会，不止于代码</h2>
+                    <p class="about-lead">
+                        计算机协会成立于2015年，是学校最具影响力的科技社团之一。
+                        我们致力于打造一个开放、包容、充满创造力的技术社区。
+                    </p>
+                    <p>
+                        在这里，你不仅能学到前沿技术，更能结识志同道合的伙伴。
+                        我们相信，每个人都能在技术世界中找到属于自己的光芒。
+                    </p>
+
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <div class="about-feature-text">
+                                <h4>零基础友好</h4>
+                                <p>从零开始的培训体系，手把手带你入门编程世界</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <div class="about-feature-text">
+                                <h4>项目驱动</h4>
+                                <p>真实项目实战经验，让你的简历脱颖而出</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <div class="about-feature-text">
+                                <h4>竞赛机会</h4>
+                                <p>参加ACM、CTF等高水平竞赛，赢取荣誉与奖金</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== DEPARTMENTS BENTO GRID ==================== -->
+    <section class="departments section" id="departments">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">部门介绍</span>
+                <h2 class="section-title">五大部门，总有一个适合你</h2>
+                <p class="section-desc">无论你擅长什么，都能找到属于自己的舞台</p>
+            </div>
+
+            <div class="bento-grid">
+                <!-- 科研部 -->
+                <div class="bento-card reveal" style="--card-accent: var(--accent-blue);">
+                    <div class="bento-icon research">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>
+                        </svg>
+                    </div>
+                    <h3>科研部</h3>
+                    <p>协会的学术核心。负责组织科研项目申报、学术竞赛备战、论文写作指导和技术前沿追踪。带领成员参与大创项目、挑战杯、计算机设计大赛等高水平赛事，用科研实力为协会赢得荣誉。</p>
+                    <div class="bento-tags">
+                        <span class="bento-tag">大创项目</span>
+                        <span class="bento-tag">学术竞赛</span>
+                        <span class="bento-tag">论文指导</span>
+                        <span class="bento-tag">技术研究</span>
+                    </div>
+                </div>
+
+                <!-- 宣传部 -->
+                <div class="bento-card reveal" style="--card-accent: var(--accent-purple);">
+                    <div class="bento-icon publicity">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                        </svg>
+                    </div>
+                    <h3>宣传部</h3>
+                    <p>协会的形象担当。负责公众号运营、海报设计、活动摄影、视频剪辑和品牌建设。用创意和审美传递协会声音，让每一次活动都被看见。</p>
+                    <div class="bento-tags">
+                        <span class="bento-tag">公众号运营</span>
+                        <span class="bento-tag">平面设计</span>
+                        <span class="bento-tag">摄影剪辑</span>
+                    </div>
+                </div>
+
+                <!-- 办公室 -->
+                <div class="bento-card reveal reveal-delay-1" style="--card-accent: var(--accent-amber);">
+                    <div class="bento-icon office">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                    </div>
+                    <h3>办公室</h3>
+                    <p>协会的运转中枢。负责会议记录、档案管理、物资统筹、排班调度和内部通知。确保协会日常运作有条不紊，是各部门高效协作的润滑剂。</p>
+                    <div class="bento-tags">
+                        <span class="bento-tag">档案管理</span>
+                        <span class="bento-tag">会议记录</span>
+                        <span class="bento-tag">物资统筹</span>
+                    </div>
+                </div>
+
+                <!-- 管理部 -->
+                <div class="bento-card reveal reveal-delay-2" style="--card-accent: var(--accent-cyan);">
+                    <div class="bento-icon management">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>管理部</h3>
+                    <p>协会的组织大脑。负责成员招新与考核、活动出勤管理、绩效评估和团队建设。制定规章制度，优化工作流程，让每一位成员都能在协会中成长。</p>
+                    <div class="bento-tags">
+                        <span class="bento-tag">成员管理</span>
+                        <span class="bento-tag">绩效考核</span>
+                        <span class="bento-tag">制度建设</span>
+                    </div>
+                </div>
+
+                <!-- 外联部 -->
+                <div class="bento-card reveal reveal-delay-3" style="--card-accent: #EC4899;">
+                    <div class="bento-icon liaison">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <h3>外联部</h3>
+                    <p>协会的对外窗口。负责与企业洽谈赞助合作、与其他社团联动交流、对接校内外资源。为协会争取经费支持和合作机会，拓展协会的影响力边界。</p>
+                    <div class="bento-tags">
+                        <span class="bento-tag">商家赞助</span>
+                        <span class="bento-tag">校际合作</span>
+                        <span class="bento-tag">活动对接</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== STATS SECTION ==================== -->
+    <section class="stats section" id="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-count="500">0</div>
+                    <div class="stat-label">累计会员</div>
+                </div>
+                <div class="stat-item reveal reveal-delay-1">
+                    <div class="stat-number" data-count="30">0</div>
+                    <div class="stat-label">竞赛奖项</div>
+                </div>
+                <div class="stat-item reveal reveal-delay-2">
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-label">年度活动</div>
+                </div>
+                <div class="stat-item reveal reveal-delay-3">
+                    <div class="stat-number" data-count="15">0</div>
+                    <div class="stat-label">合作企业</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== EVENTS SECTION ==================== -->
+    <section class="events section" id="events">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">精彩活动</span>
+                <h2 class="section-title">丰富多彩的技术盛宴</h2>
+                <p class="section-desc">每周都有新技术分享，每学期都有大型活动</p>
+            </div>
+
+            <div class="events-grid">
+                <div class="event-card reveal">
+                    <div class="event-image hackathon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(139,92,246,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <div class="event-body">
+                        <div class="event-date">2026.10.15 · 每学期一次</div>
+                        <h3>Hackathon 黑客马拉松</h3>
+                        <p>48小时极限编程挑战，组队完成创意项目，赢取千元大奖</p>
+                        <span class="event-tag competition">竞赛</span>
+                    </div>
+                </div>
+
+                <div class="event-card reveal reveal-delay-1">
+                    <div class="event-image techtalk">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(34,211,238,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <div class="event-body">
+                        <div class="event-date">2026.09.20起 · 每周五晚</div>
+                        <h3>Tech Talk 技术分享会</h3>
+                        <p>由协会成员和业界嘉宾带来的技术讲座，涵盖最新技术趋势</p>
+                        <span class="event-tag talk">讲座</span>
+                    </div>
+                </div>
+
+                <div class="event-card reveal reveal-delay-2">
+                    <div class="event-image bootcamp">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(16,185,129,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                    </div>
+                    <div class="event-body">
+                        <div class="event-date">2026.11.01 · 持续4周</div>
+                        <h3>零基础编程训练营</h3>
+                        <p>面向全校新生的编程入门课程，从 Python 到 Web 开发一站式教学</p>
+                        <span class="event-tag workshop">工作坊</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== JOIN PROCESS ==================== -->
+    <section class="process section" id="process">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">加入流程</span>
+                <h2 class="section-title">四步加入计算机协会</h2>
+                <p class="section-desc">简单快捷，零门槛加入</p>
+            </div>
+
+            <div class="process-steps">
+                <div class="process-step reveal">
+                    <div class="step-number">01</div>
+                    <h3>在线报名</h3>
+                    <p>填写报名表，选择你感兴趣的部门方向</p>
+                </div>
+                <div class="process-step reveal reveal-delay-1">
+                    <div class="step-number">02</div>
+                    <h3>参加面试</h3>
+                    <p>轻松的交流面试，了解你的兴趣和基础</p>
+                </div>
+                <div class="process-step reveal reveal-delay-2">
+                    <div class="step-number">03</div>
+                    <h3>新人培训</h3>
+                    <p>参加为期两周的新人训练营，快速上手</p>
+                </div>
+                <div class="process-step reveal reveal-delay-3">
+                    <div class="step-number">04</div>
+                    <h3>正式加入</h3>
+                    <p>选择项目组，开启你的技术成长之旅</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FAQ SECTION ==================== -->
+    <section class="faq section" id="faq">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">常见问题</span>
+                <h2 class="section-title">你可能想了解的</h2>
+                <p class="section-desc">还有疑问？欢迎联系我们</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item reveal">
+                    <button class="faq-question" onclick="toggleFAQ(this)" aria-expanded="false">
+                        <span>我不会编程，可以加入吗？</span>
+                        <span class="faq-icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            当然可以！我们非常欢迎零基础的同学们。协会有完整的新人培训体系，从最基础的编程概念开始教学。特别是运营外联部，完全不需要技术背景。只要你有热情和学习动力，我们就欢迎你的加入！
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal reveal-delay-1">
+                    <button class="faq-question" onclick="toggleFAQ(this)" aria-expanded="false">
+                        <span>加入协会需要会费吗？</span>
+                        <span class="faq-icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            协会每学期收取少量会费（约50元），用于活动场地、设备维护、竞赛报名等支出。所有费用公开透明，定期公示使用情况。我们也会通过赞助和项目合作来补贴活动经费。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal reveal-delay-2">
+                    <button class="faq-question" onclick="toggleFAQ(this)" aria-expanded="false">
+                        <span>加入后每周需要投入多少时间？</span>
+                        <span class="faq-icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            常规活动包括每周一次的技术分享会（约2小时）和部门例会（约1小时）。项目组额外需要每周3-5小时的投入。我们鼓励大家根据课业情况灵活安排，不会强制要求参加所有活动。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal reveal-delay-3">
+                    <button class="faq-question" onclick="toggleFAQ(this)" aria-expanded="false">
+                        <span>可以同时加入多个部门吗？</span>
+                        <span class="faq-icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            在新人期（前两个月），你可以自由参与不同部门的活动来探索兴趣。正式分组后建议专注一个方向深耕，但如果精力允许，也欢迎跨部门交流学习。我们鼓励多元化的技术探索！
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal reveal-delay-4">
+                    <button class="faq-question" onclick="toggleFAQ(this)" aria-expanded="false">
+                        <span>不是计算机专业可以加入吗？</span>
+                        <span class="faq-icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            绝对可以！我们的成员来自全校各个专业 —— 数学、物理、设计、经管、外语等等。技术不限专业，很多优秀的开发者都是非科班出身。不同专业背景反而能带来更多元的思维方式！
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA BANNER ==================== -->
+    <section class="cta-banner section" id="cta">
+        <div class="container">
+            <div class="cta-card reveal">
+                <span class="section-tag">加入我们</span>
+                <h2>准备好开启技术之旅了吗？</h2>
+                <p>2026秋季招新现已启动，扫描下方二维码或点击按钮立即报名。我们在计算机协会等你！</p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="handleJoin()">
+                        立即报名
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                    <button class="btn btn-secondary" onclick="handleMoreInfo()">
+                        咨询详情
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#hero" class="nav-logo">
+                        <div class="nav-logo-icon" data-fallback="code">
+                            <img class="emblem-img" src="assets/emblem1.png" alt="计协会徽"
+                                 onerror="this.style.display='none';this.parentElement.setAttribute('data-fallback','show')">
+                            <svg class="emblem-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                        </div>
+                        计算机协会
+                    </a>
+                    <p>用代码改变世界，从这里开始。<br>计算机协会，不止于代码。</p>
+                </div>
+
+                <div>
+                    <h4>快速导航</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about" onclick="scrollToSection(event, 'about')">关于我们</a></li>
+                        <li><a href="#departments" onclick="scrollToSection(event, 'departments')">部门介绍</a></li>
+                        <li><a href="#events" onclick="scrollToSection(event, 'events')">精彩活动</a></li>
+                        <li><a href="#process" onclick="scrollToSection(event, 'process')">加入流程</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>部门</h4>
+                    <ul class="footer-links">
+                        <li><a href="#departments">科研部</a></li>
+                        <li><a href="#departments">宣传部</a></li>
+                        <li><a href="#departments">办公室</a></li>
+                        <li><a href="#departments">管理部</a></li>
+                        <li><a href="#departments">外联部</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>联系我们</h4>
+                    <ul class="footer-links">
+                        <li class="footer-contact-row">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            暂时没有
+                        </li>
+                        <li class="footer-contact-row">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            上头没批办公室
+                        </li>
+                        <li class="footer-contact-row">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            没批办公室所以没有开放时间
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 计算机协会. All rights reserved. Made with <svg width="14" height="14" viewBox="0 0 24 24" fill="#EF4444" stroke="none" style="display:inline;vertical-align:-2px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> by 科研部老登</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="QQ" title="QQ群">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.395 15.035a39.548 39.548 0 0 0-.803-2.264l-1.079-2.695c.001-.032.014-.562.014-.836C19.527 4.661 17.188 0 12 0S4.473 4.661 4.473 9.24c0 .274.013.804.014.836L3.426 12.77a42.71 42.71 0 0 0-.803 2.264C1.003 18.546 2.38 20 4.53 20c.612 0 1.128-.326 1.657-.704 1.077-.77 2.478-1.447 5.813-1.447s4.736.677 5.813 1.447c.529.378 1.045.704 1.657.704 2.15 0 3.527-1.454 1.925-4.965z"/></svg>
+                    </a>
+                    <a href="#" aria-label="微信" title="微信公众号">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.952-7.062-6.122zm-2.18 2.988c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982z"/></svg>
+                    </a>
+                    <a href="#" aria-label="GitHub" title="GitHub">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Bilibili" title="B站">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="回到顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"/>
+        </svg>
+    </button>
+
+    <!-- ==================== QR CODE MODAL ==================== -->
+    <div class="modal-overlay" id="qrModal" role="dialog" aria-modal="true" aria-label="报名二维码">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeQRModal()" aria-label="关闭">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+
+            <span class="section-tag">扫码报名</span>
+            <h2 class="modal-title">加入计算机协会</h2>
+            <p class="modal-desc">扫描下方二维码，填写报名表并加入招新群</p>
+
+            <div class="qr-grid">
+                <div class="qr-card">
+                    <div class="qr-placeholder">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.3">
+                            <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+                            <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+                            <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+                            <rect x="14" y="14" width="3" height="3" rx="0.8"/>
+                            <rect x="18" y="14" width="3" height="7" rx="0.8"/>
+                            <rect x="14" y="18" width="3" height="3" rx="0.8"/>
+                        </svg>
+                        <span>QQ群二维码</span>
+                        <small>占位图 · 后续替换</small>
+                    </div>
+                    <h4>招新QQ群</h4>
+                    <p>扫码加入2026招新群，获取最新通知</p>
+                </div>
+
+                <div class="qr-card">
+                    <div class="qr-placeholder">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.3">
+                            <rect x="2" y="2" width="20" height="20" rx="3"/>
+                            <path d="M8 8h8M8 12h8M8 16h5"/>
+                        </svg>
+                        <span>报名文档二维码</span>
+                        <small>占位图 · 后续替换</small>
+                    </div>
+                    <h4>报名表</h4>
+                    <p>扫码填写在线报名表，选择心仪部门</p>
+                </div>
+            </div>
+
+            <p class="modal-footer-text">报名截止：2026年9月30日 · 面试时间另行通知</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
