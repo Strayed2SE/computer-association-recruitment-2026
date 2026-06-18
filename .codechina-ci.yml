@@ -1,9 +1,8 @@
 pages:
   stage: deploy
   script:
-    - mkdir .public
-    - cp -r * .public
-    - mv .public public
+    - mkdir public
+    - cp -r index.html styles.css script.js README.md assets public/
   artifacts:
     paths:
       - public
