@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="no-js">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -24,7 +24,6 @@
         <div class="navbar-inner">
             <a href="#hero" class="nav-logo" aria-label="计算机协会首页">
                 <div class="nav-logo-icon" data-fallback="code">
-                    <!-- ★ 替换为会徽：将 src 改为实际图片路径，例如 src="assets/emblem1.png" -->
                     <img class="emblem-img" src="assets/emblem1.png" alt="计协会徽"
                          onerror="this.style.display='none';this.parentElement.setAttribute('data-fallback','show')">
                     <svg class="emblem-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -81,13 +80,15 @@
         <button class="nav-cta" onclick="closeMobileNav(); scrollToSection(event, 'cta')">立即加入</button>
     </div>
 
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main id="main">
+
     <!-- ==================== HERO SECTION ==================== -->
     <section class="hero" id="hero">
         <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
         <div class="hero-bg-gradient" aria-hidden="true"></div>
 
         <div class="hero-content">
-            <!-- ★ 替换为会徽：将 src 改为实际图片路径 -->
             <div class="hero-emblem">
                 <img class="hero-emblem-img" src="assets/emblem1.png" alt="计算机协会会徽"
                      onerror="this.style.display='none';this.parentElement.classList.add('no-img')">
@@ -109,8 +110,8 @@
             </h1>
 
             <p class="hero-subtitle">
-                计算机协会汇聚全校最优秀的技术爱好者。无论你是编程大神还是零基础小白，
-                这里都有属于你的舞台。编程、设计、AI、安全 —— 总有一个方向适合你。
+                计算机协会是校园计算机爱好者聚集地。
+                如果你对计算机感兴趣，想锻炼动手能力、结识志同道合的伙伴，欢迎加入我们。
             </p>
 
             <div class="hero-actions">
@@ -147,8 +148,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <h4>编程开发</h4>
-                                <p>Web / 移动端 / 后端 / 游戏开发</p>
+                                <h4>社会实践</h4>
+                                <p>志愿服务 / 社区共建 / 公益宣传 / 社会调研</p>
                             </div>
                         </div>
                         <div class="about-card">
@@ -169,8 +170,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <h4>竞赛团队</h4>
-                                <p>ACM / CTF / 数学建模 / 创新创业</p>
+                                <h4>社团活动</h4>
+                                <p>文化交流 / 素质拓展 / 主题活动 / 团建联谊</p>
                             </div>
                         </div>
                     </div>
@@ -178,14 +179,14 @@
 
                 <div class="about-text">
                     <span class="section-tag">关于我们</span>
-                    <h2 class="section-title">计算机协会，不止于代码</h2>
+                    <h2 class="section-title">计算机协会，精彩不止一面</h2>
                     <p class="about-lead">
                         计算机协会成立于2015年，是学校最具影响力的科技社团之一。
-                        我们致力于打造一个开放、包容、充满创造力的技术社区。
+                        我们致力于打造一个开放、包容、充满创造力的交流社区。
                     </p>
                     <p>
                         在这里，你不仅能学到前沿技术，更能结识志同道合的伙伴。
-                        我们相信，每个人都能在技术世界中找到属于自己的光芒。
+                        我们相信，每个人都能在精彩世界中找到属于自己的光芒。
                     </p>
 
                     <div class="about-features">
@@ -195,7 +196,7 @@
                             </div>
                             <div class="about-feature-text">
                                 <h4>零基础友好</h4>
-                                <p>从零开始的培训体系，手把手带你入门编程世界</p>
+                                <p>从零开始的培训体系，手把手带你开启精彩旅程</p>
                             </div>
                         </div>
                         <div class="about-feature">
@@ -213,7 +214,7 @@
                             </div>
                             <div class="about-feature-text">
                                 <h4>竞赛机会</h4>
-                                <p>参加ACM、CTF等高水平竞赛，赢取荣誉与奖金</p>
+                                <p>参与各类精彩活动，收获友谊与成长</p>
                             </div>
                         </div>
                     </div>
@@ -227,8 +228,8 @@
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-tag">部门介绍</span>
-                <h2 class="section-title">五大部门，总有一个适合你</h2>
-                <p class="section-desc">无论你擅长什么，都能找到属于自己的舞台</p>
+                <h2 class="section-title">五大职能部门，各司其职</h2>
+                <p class="section-desc">严谨高效的组织架构，保障协会平稳运转</p>
             </div>
 
             <div class="bento-grid">
@@ -240,12 +241,12 @@
                         </svg>
                     </div>
                     <h3>科研部</h3>
-                    <p>协会的学术核心。负责组织科研项目申报、学术竞赛备战、论文写作指导和技术前沿追踪。带领成员参与大创项目、挑战杯、计算机设计大赛等高水平赛事，用科研实力为协会赢得荣誉。</p>
+                    <p>负责计算机软硬件的维护和技术支持，组织技术培训和讲座，还有比赛活动的出题等。是协会的技术实力担当，保障各项活动的技术落地。</p>
                     <div class="bento-tags">
-                        <span class="bento-tag">大创项目</span>
-                        <span class="bento-tag">学术竞赛</span>
-                        <span class="bento-tag">论文指导</span>
-                        <span class="bento-tag">技术研究</span>
+                        <span class="bento-tag">软硬件维护</span>
+                        <span class="bento-tag">技术培训</span>
+                        <span class="bento-tag">讲座组织</span>
+                        <span class="bento-tag">比赛出题</span>
                     </div>
                 </div>
 
@@ -257,11 +258,10 @@
                         </svg>
                     </div>
                     <h3>宣传部</h3>
-                    <p>协会的形象担当。负责公众号运营、海报设计、活动摄影、视频剪辑和品牌建设。用创意和审美传递协会声音，让每一次活动都被看见。</p>
+                    <p>负责社团活动前期的宣传推广，包括制作海报，撰写宣传语等。用创意点亮每一次活动，让更多人看到计协的精彩。</p>
                     <div class="bento-tags">
-                        <span class="bento-tag">公众号运营</span>
-                        <span class="bento-tag">平面设计</span>
-                        <span class="bento-tag">摄影剪辑</span>
+                        <span class="bento-tag">海报制作</span>
+                        <span class="bento-tag">宣传文案</span>
                     </div>
                 </div>
 
@@ -273,11 +273,12 @@
                         </svg>
                     </div>
                     <h3>办公室</h3>
-                    <p>协会的运转中枢。负责会议记录、档案管理、物资统筹、排班调度和内部通知。确保协会日常运作有条不紊，是各部门高效协作的润滑剂。</p>
+                    <p>负责协会的日常行政事务，如对外发布活动、获奖名单收集、会议记录和日程安排等。是协会高效运转的"中枢神经"。</p>
                     <div class="bento-tags">
-                        <span class="bento-tag">档案管理</span>
+                        <span class="bento-tag">活动发布</span>
                         <span class="bento-tag">会议记录</span>
-                        <span class="bento-tag">物资统筹</span>
+                        <span class="bento-tag">日程安排</span>
+                        <span class="bento-tag">资料收集</span>
                     </div>
                 </div>
 
@@ -289,11 +290,11 @@
                         </svg>
                     </div>
                     <h3>管理部</h3>
-                    <p>协会的组织大脑。负责成员招新与考核、活动出勤管理、绩效评估和团队建设。制定规章制度，优化工作流程，让每一位成员都能在协会中成长。</p>
+                    <p>负责活动场地的布置及安排各部门人员进行值班等。统筹协调协会大小事务，确保每一次活动井然有序、顺利开展。</p>
                     <div class="bento-tags">
-                        <span class="bento-tag">成员管理</span>
-                        <span class="bento-tag">绩效考核</span>
-                        <span class="bento-tag">制度建设</span>
+                        <span class="bento-tag">场地布置</span>
+                        <span class="bento-tag">人员安排</span>
+                        <span class="bento-tag">值班调度</span>
                     </div>
                 </div>
 
@@ -305,11 +306,10 @@
                         </svg>
                     </div>
                     <h3>外联部</h3>
-                    <p>协会的对外窗口。负责与企业洽谈赞助合作、与其他社团联动交流、对接校内外资源。为协会争取经费支持和合作机会，拓展协会的影响力边界。</p>
+                    <p>负责与其他社团的沟通合作和与老师的对接，以及前期活动物品的租借等。是协会对外交流的桥梁与窗口。</p>
                     <div class="bento-tags">
-                        <span class="bento-tag">商家赞助</span>
-                        <span class="bento-tag">校际合作</span>
-                        <span class="bento-tag">活动对接</span>
+                        <span class="bento-tag">社团合作</span>
+                        <span class="bento-tag">师生对接</span>
                     </div>
                 </div>
             </div>
@@ -321,20 +321,20 @@
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item reveal">
-                    <div class="stat-number" data-count="500">0</div>
-                    <div class="stat-label">累计会员</div>
+                    <div class="stat-number" data-count="80">0</div>
+                    <div class="stat-label">协会成员</div>
                 </div>
                 <div class="stat-item reveal reveal-delay-1">
-                    <div class="stat-number" data-count="30">0</div>
-                    <div class="stat-label">竞赛奖项</div>
+                    <div class="stat-number" data-count="十佳社团">0</div>
+                    <div class="stat-label">社团荣誉</div>
                 </div>
                 <div class="stat-item reveal reveal-delay-2">
-                    <div class="stat-number" data-count="50">0</div>
-                    <div class="stat-label">年度活动</div>
+                    <div class="stat-number" data-count="500">0</div>
+                    <div class="stat-label">服务人数</div>
                 </div>
                 <div class="stat-item reveal reveal-delay-3">
-                    <div class="stat-number" data-count="15">0</div>
-                    <div class="stat-label">合作企业</div>
+                    <div class="stat-number" data-count="30">0</div>
+                    <div class="stat-label">累计活动</div>
                 </div>
             </div>
         </div>
@@ -352,13 +352,18 @@
             <div class="events-grid">
                 <div class="event-card reveal">
                     <div class="event-image hackathon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(139,92,246,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
-                        </svg>
+                        <img class="event-img" src="assets/fengmao.jpg" alt="计协风貌"
+                             onerror="this.style.display='none';this.parentElement.classList.add('no-img')">
+                        <div class="event-img-fallback">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(139,92,246,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                            <span>点击添加图片</span>
+                        </div>
                     </div>
                     <div class="event-body">
                         <div class="event-date">2026.10.15 · 每学期一次</div>
-                        <h3>Hackathon 黑客马拉松</h3>
+                        <h3>计协风貌</h3>
                         <p>48小时极限编程挑战，组队完成创意项目，赢取千元大奖</p>
                         <span class="event-tag competition">竞赛</span>
                     </div>
@@ -366,13 +371,18 @@
 
                 <div class="event-card reveal reveal-delay-1">
                     <div class="event-image techtalk">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(34,211,238,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
-                        </svg>
+                        <img class="event-img" src="assets/peixun.JPG" alt="技术培训"
+                             onerror="this.style.display='none';this.parentElement.classList.add('no-img')">
+                        <div class="event-img-fallback">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(34,211,238,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+                            </svg>
+                            <span>点击添加图片</span>
+                        </div>
                     </div>
                     <div class="event-body">
                         <div class="event-date">2026.09.20起 · 每周五晚</div>
-                        <h3>Tech Talk 技术分享会</h3>
+                        <h3>技术培训</h3>
                         <p>由协会成员和业界嘉宾带来的技术讲座，涵盖最新技术趋势</p>
                         <span class="event-tag talk">讲座</span>
                     </div>
@@ -380,13 +390,18 @@
 
                 <div class="event-card reveal reveal-delay-2">
                     <div class="event-image bootcamp">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(16,185,129,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
-                        </svg>
+                        <img class="event-img" src="assets/huodong.jpg" alt="计协活动"
+                             onerror="this.style.display='none';this.parentElement.classList.add('no-img')">
+                        <div class="event-img-fallback">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(16,185,129,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                            <span>点击添加图片</span>
+                        </div>
                     </div>
                     <div class="event-body">
                         <div class="event-date">2026.11.01 · 持续4周</div>
-                        <h3>零基础编程训练营</h3>
+                        <h3>计协活动</h3>
                         <p>面向全校新生的编程入门课程，从 Python 到 Web 开发一站式教学</p>
                         <span class="event-tag workshop">工作坊</span>
                     </div>
@@ -462,7 +477,7 @@
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            协会每学期收取少量会费（约50元），用于活动场地、设备维护、竞赛报名等支出。所有费用公开透明，定期公示使用情况。我们也会通过赞助和项目合作来补贴活动经费。
+                            协会每学期一般不收取会费，除个别特殊情况外，完全免费加入。
                         </div>
                     </div>
                 </div>
@@ -534,6 +549,7 @@
         </div>
     </section>
 
+    </main>
     <!-- ==================== FOOTER ==================== -->
     <footer class="footer" id="footer">
         <div class="container">
@@ -550,7 +566,7 @@
                         </div>
                         计算机协会
                     </a>
-                    <p>用代码改变世界，从这里开始。<br>计算机协会，不止于代码。</p>
+                    <p>用行动改变世界，从这里开始。<br>计算机协会，精彩不止一面。</p>
                 </div>
 
                 <div>
@@ -579,33 +595,34 @@
                     <ul class="footer-links">
                         <li class="footer-contact-row">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                            暂时没有
+                            csa@university.edu.cn
                         </li>
                         <li class="footer-contact-row">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            上头没批办公室
+                            学生活动中心 302
                         </li>
                         <li class="footer-contact-row">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                            没批办公室所以没有开放时间
+                            每周五 18:00-21:00
                         </li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>© 2026 计算机协会. All rights reserved. Made with <svg width="14" height="14" viewBox="0 0 24 24" fill="#EF4444" stroke="none" style="display:inline;vertical-align:-2px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> by 科研部老登</p>
+                <p>© 2026 计算机协会. All rights reserved. Made with <svg width="14" height="14" viewBox="0 0 24 24" fill="#EF4444" stroke="none" style="display:inline;vertical-align:-2px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> by CSA Team</p>
+                <!-- ★ QQ/微信扫码入口（群二维码），GitHub/Bilibili 为真实外链，请替换为协会账号 -->
                 <div class="footer-social">
-                    <a href="#" aria-label="QQ" title="QQ群">
+                    <a href="#" aria-label="加入QQ群（扫码）" title="QQ群" onclick="event.preventDefault(); openQRModal();">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.395 15.035a39.548 39.548 0 0 0-.803-2.264l-1.079-2.695c.001-.032.014-.562.014-.836C19.527 4.661 17.188 0 12 0S4.473 4.661 4.473 9.24c0 .274.013.804.014.836L3.426 12.77a42.71 42.71 0 0 0-.803 2.264C1.003 18.546 2.38 20 4.53 20c.612 0 1.128-.326 1.657-.704 1.077-.77 2.478-1.447 5.813-1.447s4.736.677 5.813 1.447c.529.378 1.045.704 1.657.704 2.15 0 3.527-1.454 1.925-4.965z"/></svg>
                     </a>
-                    <a href="#" aria-label="微信" title="微信公众号">
+                    <a href="#" aria-label="关注微信公众号（扫码）" title="微信公众号" onclick="event.preventDefault(); openQRModal();">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.952-7.062-6.122zm-2.18 2.988c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982z"/></svg>
                     </a>
-                    <a href="#" aria-label="GitHub" title="GitHub">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub（在新标签打开）" title="GitHub">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
                     </a>
-                    <a href="#" aria-label="Bilibili" title="B站">
+                    <a href="https://www.bilibili.com" target="_blank" rel="noopener noreferrer" aria-label="B站（在新标签打开）" title="B站">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373z"/></svg>
                     </a>
                 </div>
@@ -635,7 +652,9 @@
 
             <div class="qr-grid">
                 <div class="qr-card">
-                    <div class="qr-placeholder">
+                    <div class="qr-placeholder has-image">
+                        <img src="assets/qq qun.png" alt="招新QQ群二维码" title="双击放大" draggable="false"
+                             onerror="this.style.display='none';this.parentElement.classList.remove('has-image')">
                         <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.3">
                             <rect x="3" y="3" width="7" height="7" rx="1.5"/>
                             <rect x="14" y="3" width="7" height="7" rx="1.5"/>
@@ -648,7 +667,7 @@
                         <small>占位图 · 后续替换</small>
                     </div>
                     <h4>招新QQ群</h4>
-                    <p>扫码加入2026招新群，获取最新通知</p>
+                    <p>扫码加入2026招新群，获取最新通知 · 双击二维码可放大</p>
                 </div>
 
                 <div class="qr-card">
@@ -667,6 +686,17 @@
 
             <p class="modal-footer-text">报名截止：2026年9月30日 · 面试时间另行通知</p>
         </div>
+    </div>
+
+    <!-- ==================== QR ZOOM LIGHTBOX ==================== -->
+    <div class="qr-zoom-overlay" id="qrZoomOverlay" role="dialog" aria-modal="true" aria-label="二维码放大预览">
+        <button class="qr-zoom-close" id="qrZoomClose" aria-label="关闭放大预览">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+        <img class="qr-zoom-img" id="qrZoomImg" src="" alt="放大后的二维码" draggable="false">
+        <span class="qr-zoom-hint">点击任意位置关闭</span>
     </div>
 
     <script src="script.js"></script>

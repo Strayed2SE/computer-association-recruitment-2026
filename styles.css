@@ -6,7 +6,7 @@
             --bg-card-hover: #1E2642;
             --text-primary: #F1F5F9;
             --text-secondary: #94A3B8;
-            --text-muted: #64748B;
+            --text-muted: #8290A8;
             --accent-blue: #4F6EF7;
             --accent-blue-dim: rgba(79, 110, 247, 0.15);
             --accent-purple: #8B5CF6;
@@ -18,6 +18,7 @@
             --success: #10B981;
             --border: #1E293B;
             --border-light: #334155;
+            --gradient-brand: linear-gradient(135deg, #3F5BE0 0%, #7C4EEC 100%);
             --radius-sm: 8px;
             --radius: 12px;
             --radius-lg: 16px;
@@ -41,7 +42,7 @@
             --bg-card-hover: #F1F5F9;
             --text-primary: #0F172A;
             --text-secondary: #475569;
-            --text-muted: #64748B;
+            --text-muted: #5A6B82;
             --border: #E2E8F0;
             --border-light: #CBD5E1;
             --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -109,6 +110,17 @@
         }
         [data-theme="light"] .event-image::after {
             background: linear-gradient(180deg, transparent 50%, var(--bg-card));
+        }
+        /* Light mode: darken accent-colored micro-labels for contrast */
+        [data-theme="light"] .section-tag {
+            color: #0E7490;
+            background: rgba(14, 116, 144, 0.10);
+            border-color: rgba(14, 116, 144, 0.25);
+        }
+        [data-theme="light"] .hero-badge {
+            color: #3B4FD6;
+            background: rgba(59, 79, 214, 0.08);
+            border-color: rgba(59, 79, 214, 0.25);
         }
 
 
@@ -349,8 +361,8 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.625rem 1.5rem;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            padding: 0.875rem 1.5rem;
+            background: var(--gradient-brand);
             color: #fff;
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 600;
@@ -373,8 +385,8 @@
 
         /* Theme Toggle */
         .theme-toggle {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: none;
             border: none;
@@ -402,7 +414,11 @@
         /* Hamburger */
         .hamburger {
             display: none;
+            width: 44px;
+            height: 44px;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
             gap: 5px;
             cursor: pointer;
             padding: 4px;
@@ -589,7 +605,7 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            background: var(--gradient-brand);
             color: #fff;
             box-shadow: 0 4px 15px rgba(79, 110, 247, 0.3);
         }
@@ -773,7 +789,7 @@
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
             padding: 2rem;
-            cursor: pointer;
+            cursor: default;
             transition: background var(--transition-slow), border-color var(--transition-slow), transform var(--transition-slow), box-shadow var(--transition-slow);
             position: relative;
             overflow: hidden;
@@ -897,6 +913,7 @@
             background-clip: text;
             margin-bottom: 0.5rem;
             display: inline-block;
+            white-space: nowrap;
         }
 
         .stat-label {
@@ -917,7 +934,7 @@
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
             overflow: hidden;
-            cursor: pointer;
+            cursor: default;
             transition: transform var(--transition-slow), border-color var(--transition-slow), box-shadow var(--transition-slow);
         }
 
@@ -944,6 +961,49 @@
             position: absolute;
             inset: 0;
             background: linear-gradient(180deg, transparent 50%, var(--bg-card));
+        }
+
+        /* 图片加载成功时的样式 */
+        .event-image .event-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 占位提示层（无图时显示） */
+        .event-image .event-img-fallback {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            opacity: 0.6;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .event-image .event-img-fallback svg {
+            opacity: 0.5;
+        }
+
+        .event-image .event-img-fallback span {
+            font-size: 0.75rem;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.05em;
+        }
+
+        /* 有图片时隐藏占位层 */
+        .event-image:not(.no-img) .event-img-fallback {
+            display: none;
+        }
+
+        /* 有图片时去掉底部渐变遮罩，让照片完整显示 */
+        .event-image:not(.no-img)::after {
+            display: none;
         }
 
         .event-body {
@@ -978,9 +1038,15 @@
             font-weight: 500;
         }
 
-        .event-tag.workshop { background: var(--accent-blue-dim); color: var(--accent-blue); }
+        .event-tag.workshop { background: var(--accent-blue-dim); color: #7E93FF; }
         .event-tag.competition { background: var(--accent-amber-dim); color: var(--accent-amber); }
-        .event-tag.talk { background: var(--accent-purple-dim); color: var(--accent-purple); }
+        .event-tag.talk { background: var(--accent-purple-dim); color: #A78BFA; }
+        /* Light mode: darken event tag text for WCAG 4.5:1 contrast on pale tag backgrounds */
+        [data-theme="light"] .event-tag.workshop { color: #3B4FD6; }
+        [data-theme="light"] .event-tag.competition { color: #92400E; }
+        [data-theme="light"] .event-tag.talk { color: #6D28D9; }
+        /* Light mode: darken date labels for WCAG 4.5:1 contrast on white cards */
+        [data-theme="light"] .event-date { color: #0E7490; }
 
         /* ============ Join Process ============ */
         .process {
@@ -1223,8 +1289,8 @@
         }
 
         .footer-social a {
-            width: 36px;
-            height: 36px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid var(--border);
@@ -1243,6 +1309,12 @@
         }
 
         /* ============ Animations ============ */
+        /* No-JS fallback: keep reveal content visible when JavaScript is unavailable */
+        html.no-js .reveal {
+            opacity: 1;
+            transform: none;
+        }
+
         .reveal {
             opacity: 0;
             transform: translateY(32px);
@@ -1362,6 +1434,7 @@
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
+            .navbar-inner .nav-cta { display: none; } /* duplicate CTA lives in the mobile menu */
             .hamburger { display: flex; }
 
             .bento-grid {
@@ -1434,36 +1507,6 @@
             color: var(--text-muted);
         }
 
-        /* ============ Toast Notification ============ */
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            z-index: 200;
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius);
-            padding: 1rem 1.5rem;
-            color: var(--text-primary);
-            font-size: 0.9375rem;
-            box-shadow: var(--shadow-lg);
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-        }
-        .toast-icon {
-            width: 20px;
-            height: 20px;
-            color: var(--accent-cyan);
-            flex-shrink: 0;
-        }
-
         /* ============ QR Modal ============ */
         .modal-overlay {
             position: fixed;
@@ -1531,6 +1574,75 @@
             color: var(--text-primary);
         }
 
+        /* ============ QR Zoom Lightbox ============ */
+        .qr-zoom-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 300; /* 位于报名弹窗(200)之上 */
+            background: rgba(10, 14, 26, 0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .qr-zoom-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .qr-zoom-img {
+            width: auto;
+            height: auto;
+            max-width: min(85vw, 78vh);
+            max-height: min(85vw, 78vh);
+            object-fit: contain;
+            background: #fff; /* 白底保证扫码静区 */
+            padding: 1rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .qr-zoom-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .qr-zoom-close:hover {
+            background: rgba(255, 255, 255, 0.16);
+            transform: scale(1.05);
+        }
+
+        .qr-zoom-hint {
+            font-size: 0.8125rem;
+            color: rgba(255, 255, 255, 0.55);
+            letter-spacing: 0.03em;
+        }
+
+        /* 可放大的二维码图片提示 */
+        .qr-placeholder.has-image img {
+            cursor: zoom-in;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
         .modal-title {
             margin: 0.75rem 0 0.5rem;
             font-size: 1.75rem;
@@ -1584,6 +1696,22 @@
         .qr-placeholder small {
             font-size: 0.6875rem;
             opacity: 0.5;
+        }
+        /* 已加载图片的占位框：虚线变实线，填充图片 */
+        .qr-placeholder.has-image {
+            border-style: solid;
+            border-color: var(--border-light);
+            padding: 8px;
+            background: #fff;
+        }
+        .qr-placeholder.has-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        .qr-placeholder.has-image > :not(img) {
+            display: none;
         }
 
         .qr-card h4 {
