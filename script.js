@@ -1,8 +1,3 @@
-        // ============ JS Boot ============
-        // JS is alive: remove the no-js class so reveal animations take over.
-        // Without JS, html.no-js keeps all content visible via CSS fallback.
-        document.documentElement.classList.remove('no-js');
-
         // ============ Theme Toggle ============
         (function() {
             const toggle = document.getElementById('themeToggle');
@@ -40,18 +35,6 @@
                 height = canvas.height = rect.height;
             }
 
-            // Theme-aware color palette: light mode needs darker, more opaque particles
-            function palette() {
-                const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-                return {
-                    sat: isLight ? 70 : 80,
-                    light: isLight ? 45 : 65,
-                    opMin: isLight ? 0.22 : 0.10,
-                    opRange: isLight ? 0.35 : 0.40,
-                    lineMax: isLight ? 0.20 : 0.12
-                };
-            }
-
             class Particle {
                 constructor() {
                     this.reset();
@@ -62,9 +45,10 @@
                     this.size = Math.random() * 2 + 0.5;
                     this.speedX = (Math.random() - 0.5) * 0.5;
                     this.speedY = (Math.random() - 0.5) * 0.5;
-                    this.baseOpacity = Math.random() * 0.4 + 0.1;
+                    this.opacity = Math.random() * 0.4 + 0.1;
                     // Randomly assign blue or purple tint
-                    this.hue = Math.random() > 0.5 ? 230 : 265;
+                    const hue = Math.random() > 0.5 ? 230 : 265;
+                    this.color = `hsla(${hue}, 80%, 65%, ${this.opacity})`;
                 }
                 update() {
                     this.x += this.speedX;
@@ -74,11 +58,10 @@
                     if (this.y < -10) this.y = height + 10;
                     if (this.y > height + 10) this.y = -10;
                 }
-                draw(ctx, p) {
-                    const opacity = p.opMin + this.baseOpacity * p.opRange;
+                draw(ctx) {
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fillStyle = `hsla(${this.hue}, ${p.sat}%, ${p.light}%, ${opacity})`;
+                    ctx.fillStyle = this.color;
                     ctx.fill();
                 }
             }
@@ -91,14 +74,14 @@
             }
 
             // Draw connection lines between nearby particles
-            function drawConnections(ctx, p) {
+            function drawConnections(ctx) {
                 for (let i = 0; i < particles.length; i++) {
                     for (let j = i + 1; j < particles.length; j++) {
                         const dx = particles[i].x - particles[j].x;
                         const dy = particles[i].y - particles[j].y;
                         const dist = Math.sqrt(dx * dx + dy * dy);
                         if (dist < 120) {
-                            const opacity = (1 - dist / 120) * p.lineMax;
+                            const opacity = (1 - dist / 120) * 0.12;
                             ctx.beginPath();
                             ctx.moveTo(particles[i].x, particles[i].y);
                             ctx.lineTo(particles[j].x, particles[j].y);
@@ -114,18 +97,17 @@
             let isTabVisible = true;
 
             function startAnimation() {
-                if (!isTabVisible || !isHeroVisible) return;
+                if (!isTabVisible) return;
                 animFrameId = requestAnimationFrame(animate);
             }
 
             function animate() {
-                const p = palette();
                 ctx.clearRect(0, 0, width, height);
-                particles.forEach(particle => {
-                    particle.update();
-                    particle.draw(ctx, p);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw(ctx);
                 });
-                drawConnections(ctx, p);
+                drawConnections(ctx);
                 startAnimation();
             }
 
@@ -144,23 +126,6 @@
                 }, 150);
             });
 
-            // Pause rendering when tab is hidden OR Hero scrolls out of view (saves GPU)
-            let isHeroVisible = true;
-            const hero = document.getElementById('hero');
-            if (hero && 'IntersectionObserver' in window) {
-                const io = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        isHeroVisible = entry.isIntersecting;
-                        if (isHeroVisible) {
-                            startAnimation();
-                        } else {
-                            cancelAnimationFrame(animFrameId);
-                        }
-                    });
-                }, { threshold: 0 });
-                io.observe(hero);
-            }
-
             document.addEventListener('visibilitychange', () => {
                 isTabVisible = !document.hidden;
                 if (isTabVisible) {
@@ -171,65 +136,117 @@
             });
         })();
 
-        // ============ Unified Scroll Handler (throttled via rAF) ============
+        // ============ Navbar Scroll Effect ============
         (function() {
             const navbar = document.getElementById('navbar');
             const backToTop = document.getElementById('backToTop');
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-links a');
-            let ticking = false;
 
             function onScroll() {
-                if (ticking) return;
-                ticking = true;
-                requestAnimationFrame(() => {
-                    const scrollY = window.scrollY;
+                const scrollY = window.scrollY;
 
-                    // Navbar glass effect
-                    navbar.classList.toggle('scrolled', scrollY > 50);
+                // Navbar glass effect
+                if (scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
 
-                    // Back to top
-                    backToTop.classList.toggle('visible', scrollY > 600);
+                // Back to top
+                if (scrollY > 600) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
 
-                    // Active nav link (skip on mobile where .nav-links is hidden)
-                    if (navLinks.length > 0) {
-                        let currentSection = '';
-                        sections.forEach(section => {
-                            if (scrollY >= section.offsetTop - 120) {
-                                currentSection = section.getAttribute('id');
-                            }
-                        });
-                        navLinks.forEach(link => {
-                            const isActive = link.getAttribute('href') === '#' + currentSection;
-                            link.classList.toggle('active', isActive);
-                        });
+                // Active nav link
+                const sections = document.querySelectorAll('section[id]');
+                const navLinks = document.querySelectorAll('.nav-links a');
+                let currentSection = '';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 120;
+                    if (scrollY >= sectionTop) {
+                        currentSection = section.getAttribute('id');
                     }
-
-                    // --- Scroll Reveal ---
-                    const reveals = document.querySelectorAll('.reveal:not(.visible)');
-                    const windowHeight = window.innerHeight;
-                    reveals.forEach(el => {
-                        if (el.getBoundingClientRect().top < windowHeight * 0.88) {
-                            el.classList.add('visible');
-                        }
-                    });
-
-                    // --- Stats counter (fires once when stats section is visible) ---
-                    const statsSection = document.getElementById('stats');
-                    if (statsSection && statsSection.getBoundingClientRect().top < windowHeight * 0.7) {
-                        animateCounters();
-                    }
-
-                    ticking = false;
                 });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+
             }
 
             window.addEventListener('scroll', onScroll, { passive: true });
-            // Fire once on load to catch elements already in view
-            window.addEventListener('load', () => { ticking = false; onScroll(); });
         })();
 
-        // ============ Stats Counter Animation ============
+        // ============ Mobile Nav ============
+        (function() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileNav = document.getElementById('mobileNav');
+
+            hamburger.addEventListener('click', () => {
+                const isOpen = mobileNav.classList.contains('open');
+                if (isOpen) {
+                    closeMobileNav();
+                } else {
+                    mobileNav.classList.add('open');
+                    hamburger.classList.add('active');
+                    hamburger.setAttribute('aria-expanded', 'true');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        })();
+
+        function closeMobileNav() {
+            const mobileNav = document.getElementById('mobileNav');
+            const hamburger = document.getElementById('hamburger');
+            mobileNav.classList.remove('open');
+            hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        // ============ Keyboard support for role="button" elements ============
+        document.addEventListener('keydown', (e) => {
+            if (e.target.getAttribute('role') === 'button' && (e.key === 'Enter' || e.key === ' ')) {
+                e.preventDefault();
+                e.target.click();
+            }
+        });
+
+        // ============ Scroll To Section ============
+        function scrollToSection(event, sectionId) {
+            if (event) event.preventDefault();
+            const section = document.getElementById(sectionId);
+            if (section) {
+                closeMobileNav();
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // ============ FAQ Accordion (Multi-expand) ============
+        function toggleFAQ(button) {
+            const faqItem = button.parentElement;
+            const isActive = faqItem.classList.contains('active');
+
+            if (isActive) {
+                faqItem.classList.remove('active');
+                button.setAttribute('aria-expanded', 'false');
+                faqItem.style.removeProperty('--answer-height');
+            } else {
+                const answer = faqItem.querySelector('.faq-answer-inner');
+                if (answer) {
+                    faqItem.style.setProperty('--answer-height', answer.scrollHeight + 'px');
+                }
+                faqItem.classList.add('active');
+                button.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        // ============ Counter Animation ============
         function animateCounters() {
             document.querySelectorAll('.stat-number[data-count]').forEach(counter => {
                 if (counter.dataset.animated) return;
@@ -266,177 +283,86 @@
             });
         }
 
-        // ============ Mobile Nav ============
-        (function() {
-            const hamburger = document.getElementById('hamburger');
-            const mobileNav = document.getElementById('mobileNav');
+        // ============ Scroll Reveal ============
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal:not(.visible)');
+            const windowHeight = window.innerHeight;
 
-            hamburger.addEventListener('click', () => {
-                const isOpen = mobileNav.classList.contains('open');
-                if (isOpen) {
-                    closeMobileNav();
-                } else {
-                    mobileNav.classList.add('open');
-                    hamburger.classList.add('active');
-                    hamburger.setAttribute('aria-expanded', 'true');
-                    document.body.style.overflow = 'hidden';
-                    // Move focus into the menu so keyboard users land inside it
-                    const firstLink = mobileNav.querySelector('a');
-                    if (firstLink) firstLink.focus();
+            reveals.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                if (top < windowHeight * 0.88) {
+                    el.classList.add('visible');
                 }
             });
-        })();
 
-        function closeMobileNav() {
-            const mobileNav = document.getElementById('mobileNav');
-            const hamburger = document.getElementById('hamburger');
-            if (!mobileNav.classList.contains('open')) return;
-            mobileNav.classList.remove('open');
-            hamburger.classList.remove('active');
-            hamburger.setAttribute('aria-expanded', 'false');
-            document.body.style.overflow = '';
-            // Return focus to the hamburger that opened the menu
-            if (document.activeElement && mobileNav.contains(document.activeElement)) {
-                hamburger.focus();
-            }
-        }
-
-        // ============ Keyboard support for role="button" elements ============
-        document.addEventListener('keydown', (e) => {
-            if (e.target.getAttribute('role') === 'button' && (e.key === 'Enter' || e.key === ' ')) {
-                e.preventDefault();
-                e.target.click();
-            }
-        });
-
-        // ============ Scroll To Section ============
-        function scrollToSection(event, sectionId) {
-            if (event) event.preventDefault();
-            const section = document.getElementById(sectionId);
-            if (section) {
-                closeMobileNav();
-                section.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        // ============ FAQ Accordion (independent: each item toggles on its own) ============
-        function toggleFAQ(button) {
-            const faqItem = button.parentElement;
-            const isActive = faqItem.classList.contains('active');
-
-            if (isActive) {
-                faqItem.classList.remove('active');
-                button.setAttribute('aria-expanded', 'false');
-                faqItem.style.removeProperty('--answer-height');
-            } else {
-                const answer = faqItem.querySelector('.faq-answer-inner');
-                if (answer) {
-                    faqItem.style.setProperty('--answer-height', answer.scrollHeight + 'px');
+            // Trigger counter animation when stats section is visible
+            const statsSection = document.getElementById('stats');
+            if (statsSection) {
+                const statsTop = statsSection.getBoundingClientRect().top;
+                if (statsTop < windowHeight * 0.7) {
+                    animateCounters();
                 }
-                faqItem.classList.add('active');
-                button.setAttribute('aria-expanded', 'true');
             }
+        }
+
+        window.addEventListener('scroll', revealOnScroll, { passive: true });
+        window.addEventListener('load', revealOnScroll);
+
+        // ============ Toast Notification ============
+        function showToast(message, duration = 4000) {
+            const existing = document.querySelector('.toast');
+            if (existing) existing.remove();
+
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.setAttribute('role', 'status');
+            toast.setAttribute('aria-live', 'polite');
+            toast.innerHTML = `
+                <svg class="toast-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                </svg>
+                ${message}
+            `;
+            document.body.appendChild(toast);
+
+            requestAnimationFrame(() => toast.classList.add('show'));
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 400);
+            }, duration);
         }
 
         // ============ QR Code Modal ============
-        let modalLastFocus = null;
-
         function openQRModal() {
             const modal = document.getElementById('qrModal');
-            modalLastFocus = document.activeElement;
             modal.classList.add('open');
             document.body.style.overflow = 'hidden';
+            // Focus trap: focus the close button
             const closeBtn = modal.querySelector('.modal-close');
             if (closeBtn) closeBtn.focus();
         }
 
         function closeQRModal() {
             const modal = document.getElementById('qrModal');
-            closeQRZoom(); // 关闭报名弹窗时一并关闭二维码放大层
             modal.classList.remove('open');
             document.body.style.overflow = '';
-            // Return focus to the element that opened the modal
-            if (modalLastFocus && typeof modalLastFocus.focus === 'function') {
-                modalLastFocus.focus();
-                modalLastFocus = null;
-            }
         }
-
-        // Focus trap: keep Tab cycling within the modal while open
-        document.getElementById('qrModal').addEventListener('keydown', (e) => {
-            if (e.key !== 'Tab') return;
-            const modal = e.currentTarget;
-            const focusable = modal.querySelectorAll('button, [href], input, [tabindex]:not([tabindex="-1"])');
-            if (focusable.length === 0) return;
-            const first = focusable[0];
-            const last = focusable[focusable.length - 1];
-            if (e.shiftKey && document.activeElement === first) {
-                e.preventDefault();
-                last.focus();
-            } else if (!e.shiftKey && document.activeElement === last) {
-                e.preventDefault();
-                first.focus();
-            }
-        });
 
         // Close modal on overlay click
         document.getElementById('qrModal').addEventListener('click', (e) => {
             if (e.target === e.currentTarget) closeQRModal();
         });
 
-        // Close modal / mobile nav on Escape key
+        // Close modal on Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                const zoomOverlay = document.getElementById('qrZoomOverlay');
-                if (zoomOverlay.classList.contains('open')) {
-                    closeQRZoom();
-                    return;
-                }
                 const modal = document.getElementById('qrModal');
-                if (modal.classList.contains('open')) {
-                    closeQRModal();
-                    return;
-                }
-                const mobileNav = document.getElementById('mobileNav');
-                if (mobileNav.classList.contains('open')) closeMobileNav();
+                if (modal.classList.contains('open')) closeQRModal();
+                const zoom = document.getElementById('zoomOverlay');
+                if (zoom.classList.contains('open')) closeZoom();
             }
         });
-
-        // ============ QR Zoom Lightbox (双击二维码放大) ============
-        let qrZoomLastFocus = null;
-
-        function openQRZoom(imgSrc) {
-            const overlay = document.getElementById('qrZoomOverlay');
-            const zoomImg = document.getElementById('qrZoomImg');
-            if (!overlay || !zoomImg || !imgSrc) return;
-            qrZoomLastFocus = document.activeElement;
-            zoomImg.src = imgSrc;
-            overlay.classList.add('open');
-            const closeBtn = document.getElementById('qrZoomClose');
-            if (closeBtn) closeBtn.focus();
-        }
-
-        function closeQRZoom() {
-            const overlay = document.getElementById('qrZoomOverlay');
-            if (!overlay || !overlay.classList.contains('open')) return;
-            overlay.classList.remove('open');
-            if (qrZoomLastFocus && typeof qrZoomLastFocus.focus === 'function') {
-                qrZoomLastFocus.focus();
-                qrZoomLastFocus = null;
-            }
-        }
-
-        // 双击二维码图片放大（报名表二维码补图后同样生效）
-        document.querySelectorAll('.qr-placeholder img').forEach(img => {
-            img.addEventListener('dblclick', (e) => {
-                e.preventDefault();
-                openQRZoom(img.src);
-            });
-        });
-
-        // 点击放大层任意位置或关闭按钮关闭
-        document.getElementById('qrZoomOverlay').addEventListener('click', closeQRZoom);
-        document.getElementById('qrZoomClose').addEventListener('click', closeQRZoom);
 
         // ============ CTA Handlers ============
         function handleJoin() {
@@ -449,3 +375,29 @@
                 faqSection.scrollIntoView({ behavior: 'smooth' });
             }
         }
+
+        // ============ Image Zoom ============
+        function openZoom(src) {
+            const overlay = document.getElementById('zoomOverlay');
+            const img = document.getElementById('zoomImg');
+            img.src = src;
+            overlay.classList.add('open');
+        }
+
+        function closeZoom() {
+            const overlay = document.getElementById('zoomOverlay');
+            overlay.classList.remove('open');
+        }
+
+        // Bind click events to QR placeholder images
+        document.querySelectorAll('.qr-placeholder.has-image').forEach(el => {
+            const img = el.querySelector('img');
+            if (img) {
+                el.addEventListener('click', () => openZoom(img.src));
+            }
+        });
+
+        // Close zoom on overlay click
+        document.getElementById('zoomOverlay').addEventListener('click', (e) => {
+            if (e.target.id === 'zoomOverlay') closeZoom();
+        });

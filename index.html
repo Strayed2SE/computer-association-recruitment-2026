@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="no-js">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="计算机协会招新 - 加入我们，探索代码的无限可能。编程、设计、人工智能、网络安全等多个方向等你来挑战！">
     <title>计算机协会 · 2026招新</title>
 
-    <!-- Google Fonts: Space Grotesk + DM Sans (async, non-blocking) -->
+    <!-- Google Fonts: Space Grotesk + DM Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -24,7 +23,7 @@
         <div class="navbar-inner">
             <a href="#hero" class="nav-logo" aria-label="计算机协会首页">
                 <div class="nav-logo-icon" data-fallback="code">
-                    <img class="emblem-img" src="assets/emblem1.png" alt="计协会徽"
+                    <img class="emblem-img" src="images/emblem.png" alt="计协会徽"
                          onerror="this.style.display='none';this.parentElement.setAttribute('data-fallback','show')">
                     <svg class="emblem-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <polyline points="16 18 22 12 16 6"></polyline>
@@ -80,17 +79,15 @@
         <button class="nav-cta" onclick="closeMobileNav(); scrollToSection(event, 'cta')">立即加入</button>
     </div>
 
-    <!-- ==================== MAIN CONTENT ==================== -->
-    <main id="main">
-
     <!-- ==================== HERO SECTION ==================== -->
     <section class="hero" id="hero">
         <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
         <div class="hero-bg-gradient" aria-hidden="true"></div>
 
         <div class="hero-content">
+            <!-- ★ 替换为会徽：将 src 改为实际图片路径 -->
             <div class="hero-emblem">
-                <img class="hero-emblem-img" src="assets/emblem1.png" alt="计算机协会会徽"
+                <img class="hero-emblem-img" src="images/emblem.png" alt="计算机协会会徽"
                      onerror="this.style.display='none';this.parentElement.classList.add('no-img')">
                 <div class="hero-emblem-placeholder" aria-hidden="true">
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -105,7 +102,7 @@
             </div>
 
             <h1 class="hero-title">
-                用代码改变世界<br>
+                用计算机改变世界<br>
                 <span class="hero-title-gradient">从这里开始</span>
             </h1>
 
@@ -148,8 +145,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <h4>社会实践</h4>
-                                <p>志愿服务 / 社区共建 / 公益宣传 / 社会调研</p>
+                                <h4>校园实践</h4>
+                                <p>志愿服务 / 公益宣传 / 活动设计</p>
                             </div>
                         </div>
                         <div class="about-card">
@@ -160,7 +157,7 @@
                             </div>
                             <div>
                                 <h4>技术分享</h4>
-                                <p>每周技术讲座 / 项目实战 / Hackathon</p>
+                                <p>定期培训 / 电脑维修 / 技术咨询</p>
                             </div>
                         </div>
                         <div class="about-card">
@@ -171,7 +168,7 @@
                             </div>
                             <div>
                                 <h4>社团活动</h4>
-                                <p>文化交流 / 素质拓展 / 主题活动 / 团建联谊</p>
+                                <p>文化交流 / 主题活动 / 团建联谊</p>
                             </div>
                         </div>
                     </div>
@@ -182,7 +179,7 @@
                     <h2 class="section-title">计算机协会，精彩不止一面</h2>
                     <p class="about-lead">
                         计算机协会成立于2015年，是学校最具影响力的科技社团之一。
-                        我们致力于打造一个开放、包容、充满创造力的交流社区。
+                        我们致力于打造一个开放、包容、充满创造力的交流社团。
                     </p>
                     <p>
                         在这里，你不仅能学到前沿技术，更能结识志同道合的伙伴。
@@ -204,8 +201,8 @@
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                             </div>
                             <div class="about-feature-text">
-                                <h4>项目驱动</h4>
-                                <p>真实项目实战经验，让你的简历脱颖而出</p>
+                                <h4>活动驱动</h4>
+                                <p>各类活动积累实践经验，丰富校园经历</p>
                             </div>
                         </div>
                         <div class="about-feature">
@@ -213,8 +210,8 @@
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                             </div>
                             <div class="about-feature-text">
-                                <h4>竞赛机会</h4>
-                                <p>参与各类精彩活动，收获友谊与成长</p>
+                                <h4>比赛出题</h4>
+                                <p>了解更多计算机知识，参与比赛活动，提升技术能力</p>
                             </div>
                         </div>
                     </div>
@@ -232,12 +229,11 @@
                 <p class="section-desc">严谨高效的组织架构，保障协会平稳运转</p>
             </div>
 
-            <div class="bento-grid">
-                <!-- 科研部 -->
-                <div class="bento-card reveal" style="--card-accent: var(--accent-blue);">
-                    <div class="bento-icon research">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>
+            <div class="bento-grid dept-5">
+                <div class="bento-card large reveal" style="--card-accent: var(--accent-blue);">
+                    <div class="bento-icon programming">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
                         </svg>
                     </div>
                     <h3>科研部</h3>
@@ -250,11 +246,11 @@
                     </div>
                 </div>
 
-                <!-- 宣传部 -->
-                <div class="bento-card reveal" style="--card-accent: var(--accent-purple);">
-                    <div class="bento-icon publicity">
+                <!-- 宣传部 - 视觉创意特色 -->
+                <div class="bento-card reveal" style="--card-accent: #EC4899;">
+                    <div class="bento-icon design">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                            <path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/>
                         </svg>
                     </div>
                     <h3>宣传部</h3>
@@ -265,28 +261,26 @@
                     </div>
                 </div>
 
-                <!-- 办公室 -->
-                <div class="bento-card reveal reveal-delay-1" style="--card-accent: var(--accent-amber);">
-                    <div class="bento-icon office">
+                <!-- 外联部 - 社交联络特色 -->
+                <div class="bento-card reveal reveal-delay-1" style="--card-accent: var(--accent-cyan);">
+                    <div class="bento-icon community">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                         </svg>
                     </div>
-                    <h3>办公室</h3>
-                    <p>负责协会的日常行政事务，如对外发布活动、获奖名单收集、会议记录和日程安排等。是协会高效运转的"中枢神经"。</p>
+                    <h3>外联部</h3>
+                    <p>负责与其他社团的沟通合作和与老师的对接，以及前期活动物品的租借等。是协会对外交流的桥梁与窗口。</p>
                     <div class="bento-tags">
-                        <span class="bento-tag">活动发布</span>
-                        <span class="bento-tag">会议记录</span>
-                        <span class="bento-tag">日程安排</span>
-                        <span class="bento-tag">资料收集</span>
+                        <span class="bento-tag">社团合作</span>
+                        <span class="bento-tag">师生对接</span>
                     </div>
                 </div>
 
-                <!-- 管理部 -->
-                <div class="bento-card reveal reveal-delay-2" style="--card-accent: var(--accent-cyan);">
-                    <div class="bento-icon management">
+                <!-- 管理部 - 组织协调特色（2列） -->
+                <div class="bento-card wide reveal reveal-delay-2" style="--card-accent: var(--accent-amber);">
+                    <div class="bento-icon competition">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                            <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/>
                         </svg>
                     </div>
                     <h3>管理部</h3>
@@ -298,18 +292,20 @@
                     </div>
                 </div>
 
-                <!-- 外联部 -->
-                <div class="bento-card reveal reveal-delay-3" style="--card-accent: #EC4899;">
-                    <div class="bento-icon liaison">
+                <!-- 办公室 - 行政事务特色（2列） -->
+                <div class="bento-card wide reveal reveal-delay-3" style="--card-accent: var(--accent-purple);">
+                    <div class="bento-icon ai">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
                         </svg>
                     </div>
-                    <h3>外联部</h3>
-                    <p>负责与其他社团的沟通合作和与老师的对接，以及前期活动物品的租借等。是协会对外交流的桥梁与窗口。</p>
+                    <h3>办公室</h3>
+                    <p>负责协会的日常行政事务，如对外发布活动、获奖名单收集、会议记录和日程安排等。是协会高效运转的"中枢神经"。</p>
                     <div class="bento-tags">
-                        <span class="bento-tag">社团合作</span>
-                        <span class="bento-tag">师生对接</span>
+                        <span class="bento-tag">活动发布</span>
+                        <span class="bento-tag">会议记录</span>
+                        <span class="bento-tag">日程安排</span>
+                        <span class="bento-tag">资料收集</span>
                     </div>
                 </div>
             </div>
@@ -351,9 +347,9 @@
 
             <div class="events-grid">
                 <div class="event-card reveal">
-                    <div class="event-image hackathon">
-                        <img class="event-img" src="assets/fengmao.jpg" alt="计协风貌"
-                             onerror="this.style.display='none';this.parentElement.classList.add('no-img')">
+                    <div class="event-image">
+                        <img class="event-img" src="images/fengmao.jpg" alt="Hackathon 黑客马拉松"
+                             onerror="this.style.display='none'; this.parentElement.classList.add('no-img');">
                         <div class="event-img-fallback">
                             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(139,92,246,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
@@ -370,9 +366,9 @@
                 </div>
 
                 <div class="event-card reveal reveal-delay-1">
-                    <div class="event-image techtalk">
-                        <img class="event-img" src="assets/peixun.JPG" alt="技术培训"
-                             onerror="this.style.display='none';this.parentElement.classList.add('no-img')">
+                    <div class="event-image">
+                        <img class="event-img" src="images/peixun.JPG" alt="技术培训"
+                             onerror="this.style.display='none'; this.parentElement.classList.add('no-img');">
                         <div class="event-img-fallback">
                             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(34,211,238,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
@@ -389,9 +385,9 @@
                 </div>
 
                 <div class="event-card reveal reveal-delay-2">
-                    <div class="event-image bootcamp">
-                        <img class="event-img" src="assets/huodong.jpg" alt="计协活动"
-                             onerror="this.style.display='none';this.parentElement.classList.add('no-img')">
+                    <div class="event-image">
+                        <img class="event-img" src="images/huodong.jpg" alt="零基础编程训练营"
+                             onerror="this.style.display='none'; this.parentElement.classList.add('no-img');">
                         <div class="event-img-fallback">
                             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(16,185,129,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
@@ -491,7 +487,7 @@
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            常规活动包括每周一次的技术分享会（约2小时）和部门例会（约1小时）。项目组额外需要每周3-5小时的投入。我们鼓励大家根据课业情况灵活安排，不会强制要求参加所有活动。
+                            常规活动需要同学们参与，每个部门会有对应的报名表格。参与的活动越多，加的学分越多。我们鼓励大家灵活安排，不会强制要求参加所有活动。
                         </div>
                     </div>
                 </div>
@@ -505,7 +501,7 @@
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            在新人期（前两个月），你可以自由参与不同部门的活动来探索兴趣。正式分组后建议专注一个方向深耕，但如果精力允许，也欢迎跨部门交流学习。我们鼓励多元化的技术探索！
+                            每人只能加入一个部门。在报名时会有部门意向填选，根据你的兴趣和能力选择一个适合你的部门。
                         </div>
                     </div>
                 </div>
@@ -519,7 +515,7 @@
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            绝对可以！我们的成员来自全校各个专业 —— 数学、物理、设计、经管、外语等等。技术不限专业，很多优秀的开发者都是非科班出身。不同专业背景反而能带来更多元的思维方式！
+                            绝对可以！我们的成员来自全校各个专业 —— 大数据、人工智能、设计、经管、外语等等。技术不限专业，很多优秀的学长学姐都是非科班出身。不同专业背景反而能带来更多元的思维方式！
                         </div>
                     </div>
                 </div>
@@ -549,7 +545,6 @@
         </div>
     </section>
 
-    </main>
     <!-- ==================== FOOTER ==================== -->
     <footer class="footer" id="footer">
         <div class="container">
@@ -557,7 +552,7 @@
                 <div class="footer-brand">
                     <a href="#hero" class="nav-logo">
                         <div class="nav-logo-icon" data-fallback="code">
-                            <img class="emblem-img" src="assets/emblem1.png" alt="计协会徽"
+                            <img class="emblem-img" src="images/emblem.png" alt="计协会徽"
                                  onerror="this.style.display='none';this.parentElement.setAttribute('data-fallback','show')">
                             <svg class="emblem-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <polyline points="16 18 22 12 16 6"></polyline>
@@ -584,9 +579,9 @@
                     <ul class="footer-links">
                         <li><a href="#departments">科研部</a></li>
                         <li><a href="#departments">宣传部</a></li>
-                        <li><a href="#departments">办公室</a></li>
-                        <li><a href="#departments">管理部</a></li>
                         <li><a href="#departments">外联部</a></li>
+                        <li><a href="#departments">管理部</a></li>
+                        <li><a href="#departments">办公室</a></li>
                     </ul>
                 </div>
 
@@ -611,18 +606,17 @@
 
             <div class="footer-bottom">
                 <p>© 2026 计算机协会. All rights reserved. Made with <svg width="14" height="14" viewBox="0 0 24 24" fill="#EF4444" stroke="none" style="display:inline;vertical-align:-2px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> by CSA Team</p>
-                <!-- ★ QQ/微信扫码入口（群二维码），GitHub/Bilibili 为真实外链，请替换为协会账号 -->
                 <div class="footer-social">
-                    <a href="#" aria-label="加入QQ群（扫码）" title="QQ群" onclick="event.preventDefault(); openQRModal();">
+                    <a href="#" aria-label="QQ" title="QQ群">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.395 15.035a39.548 39.548 0 0 0-.803-2.264l-1.079-2.695c.001-.032.014-.562.014-.836C19.527 4.661 17.188 0 12 0S4.473 4.661 4.473 9.24c0 .274.013.804.014.836L3.426 12.77a42.71 42.71 0 0 0-.803 2.264C1.003 18.546 2.38 20 4.53 20c.612 0 1.128-.326 1.657-.704 1.077-.77 2.478-1.447 5.813-1.447s4.736.677 5.813 1.447c.529.378 1.045.704 1.657.704 2.15 0 3.527-1.454 1.925-4.965z"/></svg>
                     </a>
-                    <a href="#" aria-label="关注微信公众号（扫码）" title="微信公众号" onclick="event.preventDefault(); openQRModal();">
+                    <a href="#" aria-label="微信" title="微信公众号">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.952-7.062-6.122zm-2.18 2.988c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982z"/></svg>
                     </a>
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub（在新标签打开）" title="GitHub">
+                    <a href="#" aria-label="GitHub" title="GitHub">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
                     </a>
-                    <a href="https://www.bilibili.com" target="_blank" rel="noopener noreferrer" aria-label="B站（在新标签打开）" title="B站">
+                    <a href="#" aria-label="Bilibili" title="B站">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373z"/></svg>
                     </a>
                 </div>
@@ -653,21 +647,19 @@
             <div class="qr-grid">
                 <div class="qr-card">
                     <div class="qr-placeholder has-image">
-                        <img src="assets/qq qun.png" alt="招新QQ群二维码" title="双击放大" draggable="false"
-                             onerror="this.style.display='none';this.parentElement.classList.remove('has-image')">
-                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.3">
-                            <rect x="3" y="3" width="7" height="7" rx="1.5"/>
-                            <rect x="14" y="3" width="7" height="7" rx="1.5"/>
-                            <rect x="3" y="14" width="7" height="7" rx="1.5"/>
-                            <rect x="14" y="14" width="3" height="3" rx="0.8"/>
-                            <rect x="18" y="14" width="3" height="7" rx="0.8"/>
-                            <rect x="14" y="18" width="3" height="3" rx="0.8"/>
-                        </svg>
-                        <span>QQ群二维码</span>
-                        <small>占位图 · 后续替换</small>
+                        <img src="images/qq qun.png" alt="招新QQ群二维码" onerror="this.parentElement.classList.remove('has-image'); this.remove(); document.querySelector('.qr-card:first-child .qr-placeholder').innerHTML += `
+                            <svg width='64' height='64' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.2' opacity='0.3'>
+                                <rect x='3' y='3' width='7' height='7' rx='1.5'/>
+                                <rect x='14' y='3' width='7' height='7' rx='1.5'/>
+                                <rect x='3' y='14' width='7' height='7' rx='1.5'/>
+                                <rect x='14' y='14' width='3' height='3' rx='0.8'/>
+                                <rect x='18' y='14' width='3' height='7' rx='0.8'/>
+                                <rect x='14' y='18' width='3' height='3' rx='0.8'/>
+                            </svg>
+                            <span>QQ群二维码</span><small>占位图 · 图片加载失败</small>`;">
                     </div>
                     <h4>招新QQ群</h4>
-                    <p>扫码加入2026招新群，获取最新通知 · 双击二维码可放大</p>
+                    <p>扫码加入2026招新群，获取最新通知</p>
                 </div>
 
                 <div class="qr-card">
@@ -688,15 +680,15 @@
         </div>
     </div>
 
-    <!-- ==================== QR ZOOM LIGHTBOX ==================== -->
-    <div class="qr-zoom-overlay" id="qrZoomOverlay" role="dialog" aria-modal="true" aria-label="二维码放大预览">
-        <button class="qr-zoom-close" id="qrZoomClose" aria-label="关闭放大预览">
+    <!-- Image Zoom Overlay -->
+    <div class="zoom-overlay" id="zoomOverlay" role="dialog" aria-modal="true" aria-label="图片放大">
+        <button class="zoom-close" onclick="closeZoom()" aria-label="关闭放大">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
             </svg>
         </button>
-        <img class="qr-zoom-img" id="qrZoomImg" src="" alt="放大后的二维码" draggable="false">
-        <span class="qr-zoom-hint">点击任意位置关闭</span>
+        <img id="zoomImg" src="" alt="放大的二维码">
+        <span class="zoom-hint">点击任意位置关闭 · ESC</span>
     </div>
 
     <script src="script.js"></script>
